@@ -1,0 +1,6 @@
+[2025-11-06 11:27:37.383  ERR]  EDonusum Batch ELedger Process Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
+[2025-11-06 11:27:37.402  ERR]  EDonusum Batch AutoSend Despatch Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
+[2025-11-06 11:27:37.402  ERR]  EDonusum Batch AutoSend Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)

@@ -1,0 +1,22 @@
+[2025-11-06 11:27:37.334  INF]  EDonusum Batch ELedger Process Service is stopping.
+[2025-11-06 11:27:37.383  ERR]  EDonusum Batch ELedger Process Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
+[2025-11-06 11:27:37.399  INF]  EDonusum Batch ELedger Process Service: ExecuteAsync Ended
+[2025-11-06 11:27:37.401  INF]  EDonusum Batch AutoSend Despatch Service is stopping.
+[2025-11-06 11:27:37.402  ERR]  EDonusum Batch AutoSend Despatch Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
+[2025-11-06 11:27:37.402  INF]  EDonusum Batch AutoSend Despatch Service: ExecuteAsync Ended
+[2025-11-06 11:27:37.402  INF]  EDonusum Batch AutoSend Service is stopping.
+[2025-11-06 11:27:37.402  ERR]  EDonusum Batch AutoSend Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
+[2025-11-06 11:27:37.402  INF]  EDonusum Batch AutoSend Service: ExecuteAsync Ended
+[2025-11-06 11:27:49.230  INF]  Starting with DB MSSQL
+[2025-11-06 11:27:50.949  WRN]  Storing keys in a directory '/home/app/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+[2025-11-06 11:27:50.979  WRN]  No XML encryptor configured. Key {1af15544-2592-4a98-b61e-095a7349e746} may be persisted to storage in unencrypted form.
+[2025-11-06 11:27:50.995  INF]  EDonusum Batch AutoSend Service is starting.
+[2025-11-06 11:27:50.996  INF]  EDonusum Batch AutoSend Service: ExecuteAsync Started
+[2025-11-06 11:27:51.001  INF]  EDonusum Batch AutoSend Despatch Service is starting.
+[2025-11-06 11:27:51.001  INF]  EDonusum Batch AutoSend Despatch Service: ExecuteAsync Started
+[2025-11-06 11:27:51.001  INF]  EDonusum Batch ELedger Process Service is starting.
+[2025-11-06 11:27:51.001  INF]  EDonusum Batch ELedger Process Service: ExecuteAsync Started
+[2025-11-06 11:27:51.246  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.

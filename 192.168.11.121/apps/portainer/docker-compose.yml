@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  # Proxies requests to internal services
+
+  portainer-ce:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    # build:
+    #   context: ./Netty-NginX
+    # depends_on:
+      # - netty-byc-db
+    environment:
+      - TZ=Europe/Istanbul
+    volumes:
+      # - /var/run/docker.sock:/var/run/docker.sock
+      - /run/user/1000/podman/podman.sock:/var/run/docker.sock:Z
+      - ./portainer_data:/data
+      # - ./nginx/ssl/star.nettyapps.com.crt:/etc/ssl/certs/star.nettyapps.com.crt:ro
+      # - ./nginx/ssl/star.nettyapps.com.key:/etc/ssl/private/star.nettyapps.com.key:ro
+    ports:
+      - 8000:8000
+      - 9443:9443
+    restart: always

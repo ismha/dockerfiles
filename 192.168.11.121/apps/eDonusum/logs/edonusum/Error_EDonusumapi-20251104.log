@@ -1,0 +1,58 @@
+[2025-11-04 16:07:23.021  ERR]  DBAccessDapperBase => SelectDataAsync<T,U> SELECT [t01].[COID],[t01].[ELedgerTasksGUID]
+,[t01].[ELedgerTask],dbo.nettyfn_getenumlabel('ELedgerTask',[t01].[ELedgerTask],'') AS ELedgerTaskLabel,[t01].[ELedgerTaskStatus]
+,dbo.nettyfn_getenumlabel('ELedgerTaskStatus',[t01].[ELedgerTaskStatus],'') AS ELedgerTaskStatusLabel,[t01].[ELedgerGUID],[t02].[ELedgerCode] AS [ELedgerCode]
+,[t02].[ELedgerName] AS [ELedgerName],[t01].[RequestDate],[t01].[CompletionDate]
+,[t01].[Description],[t01].[NettyUserGUID],[t03].[NettyUserFullName] AS [NettyUserFullName]
+,[t03].[NettyUserName] AS [NettyUserName],[t01].[ELEdgerFileName]
+FROM [edoc].[ELedgerTasks] [t01]
+JOIN [edoc].[ELedger] [t02] ON [t01].[COID] = [t02].[COID] AND [t01].[ELedgerGUID] = [t02].[ELedgerGUID]
+JOIN [netty].[NettyUser] [t03] ON [t01].[NettyUserGUID] = [t03].[NettyUserGUID]
+
+ WHERE   t01.[ELedgerTaskStatus] = @ELedgerTaskStatus
+ORDER BY   t01.RequestDate DESC
+ parameters {"COID":null,"ELedgerTasksGUID":null,"ELedgerTask":null,"ELedgerTaskLabel":null,"ELedgerTaskStatus":"Waiting","ELedgerTaskStatusLabel":null,"ELedgerGUID":null,"ELedgerCode":null,"ELedgerName":null,"RequestDate":null,"CompletionDate":null,"Description":null,"NettyUserGUID":null,"NettyUserFullName":null,"NettyUserName":null,"ELEdgerFileName":null,"$type":"ELedgerTasks"}System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at NettyApps.Base.Dapper.DBAccessDapper.SelectDataAsync[T,U](String sqlToRun, U parameters, CancellationToken cancellationToken, Nullable`1 commandTimeOut)
+
+[2025-11-04 16:07:23.105  ERR]  EDonusum Batch ELedger Process Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at NettyApps.Base.Dapper.DBAccessDapper.SelectDataAsync[T,U](String sqlToRun, U parameters, CancellationToken cancellationToken, Nullable`1 commandTimeOut)
+   at NettyApps.Base.Dapper.DBAccessDapper.SelectDataAsync[T](String sqlToRun, T parameters, CancellationToken cancellationToken, Nullable`1 commandTimeOut)
+   at EDonusum.DAL.ELedgerTasksDB.SelectWithOutCOIDAsync(ELedgerTasks record, StringBuilder whereAddition, StringBuilder orderByAddition, CancellationToken cancellationToken, Nullable`1 commandTimeOut) in /src/EDonusum/EDonusum.DAL/DAL_Extensions/ELedgerTasksDB_extensions.cs:line 17
+   at EDonusum.Library.ELedgerTasksLibrary.SelectWithOutCOIDAsync(ELedgerTasks record, StringBuilder whereAddition, StringBuilder orderByAddition, CancellationToken cancellationToken, Nullable`1 commandTimeOut) in /src/EDonusum/EDonusum.Library/Library_Extensions/ELedgerTasksLibrary_Extension.cs:line 11
+   at EDonusum.API.Services.BatchELedgerProcessService.ProcessELedgerTasksAsync(IDBAccessDapper dBAccessDapper, IConfiguration configuration, CancellationToken cancellationToken, Nullable`1 commandTimeOut) in /src/EDonusum/EDonusum.API/Services/BatchELedgerProcessService.cs:line 39
+   at EDonusum.API.Services.BatchELedgerProcessService.DoWork(CancellationToken stoppingToken) in /src/EDonusum/EDonusum.API/Services/BatchELedgerProcessService.cs:line 20
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
+[2025-11-04 16:07:23.123  ERR]  DBAccessDapperBase => SelectDataAsync<T,U> SELECT [t01].[COID],[t01].[SalesDespatchTypeDefaultsGUID]
+,[t01].[SalesDespatchTypeGUID],[t02].[SalesDespatchTypeCode] AS [SalesDespatchTypeCode],[t02].[SalesDespatchTypeName] AS [SalesDespatchTypeName]
+,[t02].[SalesDespatchTypeGroupGUID] AS [SalesDespatchTypeGroupGUID],[t03].[SalesDespatchTypeGroupCode] AS [SalesDespatchTypeGroupCode],[t03].[SalesDespatchTypeGroupName] AS [SalesDespatchTypeGroupName]
+,[t01].[DespatchEdocType],dbo.nettyfn_getenumlabel('DespatchEdocType',[t01].[DespatchEdocType],'') AS DespatchEdocTypeLabel,[t01].[EDocDesignGUID]
+,[t04].[EDocDesignCode] AS [EDocDesignCode],[t04].[EDocDesignName] AS [EDocDesignName],[t01].[EDocPrefixGUID]
+,[t05].[EDocPrefixCode] AS [EDocPrefixCode],[t05].[EDocPrefixName] AS [EDocPrefixName],[t01].[EDocNumberingSystem]
+,dbo.nettyfn_getenumlabel('EDocNumberingSystem',[t01].[EDocNumberingSystem],'') AS EDocNumberingSystemLabel,[t01].[TPAccountIdentificationTag],[t01].[isSentAutomatically]
+,[t01].[isDateCheckActive],[t01].[isAutoOrderNoCreatedWithDocNum],[t01].[SendingPriority]
+,[t01].[ServiceProvider],dbo.nettyfn_getenumlabel('ServiceProvider',[t01].[ServiceProvider],'') AS ServiceProviderLabel
+FROM [edoc].[SalesDespatchTypeDefaults] [t01]
+JOIN [edoc].[SalesDespatchType] [t02] ON [t01].[COID] = [t02].[COID] AND [t01].[SalesDespatchTypeGUID] = [t02].[SalesDespatchTypeGUID]
+LEFT JOIN [edoc].[SalesDespatchTypeGroup] [t03] ON [t02].[COID] = [t03].[COID] AND [t02].[SalesDespatchTypeGroupGUID] = [t03].[SalesDespatchTypeGroupGUID]
+JOIN [edoc].[EDocDesign] [t04] ON [t01].[COID] = [t04].[COID] AND [t01].[EDocDesignGUID] = [t04].[EDocDesignGUID]
+LEFT JOIN [edoc].[EDocPrefix] [t05] ON [t01].[COID] = [t05].[COID] AND [t01].[EDocPrefixGUID] = [t05].[EDocPrefixGUID]
+
+ WHERE  t01.[COID] = @COID AND t01.[isSentAutomatically] = @isSentAutomatically
+ORDER BY    t01.[DespatchEdocType], t01.[SalesDespatchTypeGUID]
+ parameters {"COID":"87b4b5b6-7688-4760-b56c-7ae8632dad1e","SalesDespatchTypeDefaultsGUID":null,"SalesDespatchTypeGUID":null,"SalesDespatchTypeCode":null,"SalesDespatchTypeName":null,"SalesDespatchTypeGroupGUID":null,"SalesDespatchTypeGroupCode":null,"SalesDespatchTypeGroupName":null,"DespatchEdocType":null,"DespatchEdocTypeLabel":null,"EDocDesignGUID":null,"EDocDesignCode":null,"EDocDesignName":null,"EDocPrefixGUID":null,"EDocPrefixCode":null,"EDocPrefixName":null,"EDocNumberingSystem":null,"EDocNumberingSystemLabel":null,"TPAccountIdentificationTag":null,"isSentAutomatically":true,"isDateCheckActive":null,"isAutoOrderNoCreatedWithDocNum":null,"SendingPriority":null,"ServiceProvider":null,"ServiceProviderLabel":null,"$type":"SalesDespatchTypeDefaults"}System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at NettyApps.Base.Dapper.DBAccessDapper.SelectDataAsync[T,U](String sqlToRun, U parameters, CancellationToken cancellationToken, Nullable`1 commandTimeOut)
+
+[2025-11-04 16:07:23.125  ERR]  EDonusum Batch AutoSend Despatch Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at NettyApps.Base.Dapper.DBAccessDapper.SelectDataAsync[T,U](String sqlToRun, U parameters, CancellationToken cancellationToken, Nullable`1 commandTimeOut)
+   at NettyApps.Base.Dapper.DBAccessDapper.SelectDataAsync[T](String sqlToRun, T parameters, CancellationToken cancellationToken, Nullable`1 commandTimeOut)
+   at EDonusum.DAL.SalesDespatchTypeDefaultsDB.SelectAsync(SalesDespatchTypeDefaults record, StringBuilder whereAddition, StringBuilder orderByAddition, CancellationToken cancellationToken, Nullable`1 commandTimeOut) in /src/EDonusum/EDonusum.DAL/DAL/SalesDespatchTypeDefaultsDB.cs:line 211
+   at EDonusum.Library.SalesDespatchTypeDefaultsLibrary.SelectAsync(SalesDespatchTypeDefaults record, StringBuilder whereAddition, StringBuilder orderByAddition, CancellationToken cancellationToken, Nullable`1 commandTimeOut) in /src/EDonusum/EDonusum.Library/Library/SalesDespatchTypeDefaultsLibrary.cs:line 44
+   at EDonusum.API.Services.TaskManagerAutoSendDespatch.AutoSendDespatches(CancellationToken cancellationToken, Nullable`1 commandTimeOut) in /src/EDonusum/EDonusum.API/Services/TaskManagerAutoSendDespatch.cs:line 40
+   at EDonusum.API.Services.TaskManagerAutoSendDespatch.ProcessTasksAsync(CancellationToken cancellationToken, Nullable`1 commandTimeOut) in /src/EDonusum/EDonusum.API/Services/TaskManagerAutoSendDespatch.cs:line 31
+   at EDonusum.API.Services.BatchAutoSendDespatchService.DoWork(CancellationToken stoppingToken) in /src/EDonusum/EDonusum.API/Services/BatchAutoSendDespatchService.cs:line 19
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
+[2025-11-04 16:07:23.126  ERR]  EDonusum Batch AutoSend Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
