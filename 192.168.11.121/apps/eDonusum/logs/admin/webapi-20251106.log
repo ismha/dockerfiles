@@ -1,3 +1,0 @@
-[2025-11-06 11:27:45.835  WRN]  Storing keys in a directory '/home/app/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
-[2025-11-06 11:27:45.909  WRN]  No XML encryptor configured. Key {00f2ffa7-b6f8-42c8-8203-0787167e421c} may be persisted to storage in unencrypted form.
-[2025-11-06 11:27:46.006  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
