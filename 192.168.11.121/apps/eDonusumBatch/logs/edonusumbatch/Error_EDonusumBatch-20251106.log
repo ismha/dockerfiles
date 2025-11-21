@@ -1,6 +1,0 @@
-[2025-11-06 11:28:50.524  ERR]  EDonusum Batch Export Invoice Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
-   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
-[2025-11-06 11:28:50.533  ERR]  EDonusum ELedger Batch Import Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
-   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
-[2025-11-06 11:28:50.533  ERR]  EDonusum Batch Import Service: System.Threading.Tasks.TaskCanceledException: A task was canceled.
-   at NettyApps.Base.Core.API.NettyBackgroundServiceBase`1.ExecuteAsync(CancellationToken cancellationToken)
