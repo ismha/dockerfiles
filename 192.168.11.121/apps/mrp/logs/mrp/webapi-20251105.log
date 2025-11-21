@@ -1,4 +1,0 @@
-[2025-11-05 09:51:13.558  INF]  Starting with DB MSSQL
-[2025-11-05 09:51:14.411  WRN]  Storing keys in a directory '/home/app/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
-[2025-11-05 09:51:14.442  WRN]  No XML encryptor configured. Key {9f2de135-91cd-4bf9-8a60-7471aade3e17} may be persisted to storage in unencrypted form.
-[2025-11-05 09:51:14.663  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
