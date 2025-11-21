@@ -8,3 +8,5 @@ postgresql18-default/pgdata
 postgresql18-live/pgdata
 .env
 postgresql18-dev/data/pgdata
+/home/hasan/docker-files/postgresql18-dev/data
+
