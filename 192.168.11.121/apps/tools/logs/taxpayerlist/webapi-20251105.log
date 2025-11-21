@@ -1,0 +1,20 @@
+[2025-11-05 12:29:29.630  WRN]  Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+[2025-11-05 12:29:29.703  WRN]  No XML encryptor configured. Key {9824fc49-88bb-4c1f-a4ad-ea13f28d3b36} may be persisted to storage in unencrypted form.
+[2025-11-05 12:29:29.721  INF]  TaxPayerBackGroundService: ExecuteAsync Started
+[2025-11-05 12:29:29.881  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+[2025-11-05 12:30:46.650  INF]  TaxPayerBackGroundService is stopping.
+[2025-11-05 12:30:46.661  ERR]  TaxPayerBackGroundService: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TaxPayerList.Services.TaxPayerBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in /src/Services/TaxPayerBackgroundService.cs:line 24
+[2025-11-05 12:30:46.661  INF]  TaxPayerBackGroundService: ExecuteAsync Ended
+[2025-11-05 12:31:03.114  WRN]  Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+[2025-11-05 12:31:03.188  WRN]  No XML encryptor configured. Key {085eccf7-cb30-4b36-b8da-4f2b34ed7a24} may be persisted to storage in unencrypted form.
+[2025-11-05 12:31:03.207  INF]  TaxPayerBackGroundService: ExecuteAsync Started
+[2025-11-05 12:31:03.370  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+[2025-11-05 12:41:54.886  INF]  TaxPayerBackGroundService is stopping.
+[2025-11-05 12:41:54.897  ERR]  TaxPayerBackGroundService: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TaxPayerList.Services.TaxPayerBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in /src/Services/TaxPayerBackgroundService.cs:line 24
+[2025-11-05 12:41:54.897  INF]  TaxPayerBackGroundService: ExecuteAsync Ended
+[2025-11-05 12:42:09.899  WRN]  Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+[2025-11-05 12:42:09.972  WRN]  No XML encryptor configured. Key {6b4ee80d-2e1a-42ae-b0da-89f593cf0611} may be persisted to storage in unencrypted form.
+[2025-11-05 12:42:09.990  INF]  TaxPayerBackGroundService: ExecuteAsync Started
+[2025-11-05 12:42:10.150  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.

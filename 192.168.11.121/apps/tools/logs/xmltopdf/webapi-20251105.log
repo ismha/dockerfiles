@@ -1,0 +1,4 @@
+[2025-11-05 12:29:24.432  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+[2025-11-05 12:30:58.088  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+[2025-11-05 12:42:04.903  WRN]  Overriding address(es) 'http://*:8080'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+[2025-11-05 21:18:36.502  WRN]  Failed to determine the https port for redirect.
