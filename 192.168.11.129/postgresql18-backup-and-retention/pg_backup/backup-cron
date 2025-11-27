@@ -1,0 +1,1 @@
+*/30 * * * * root pg_dump -U primary_db_admin -d my_primary_db -F c -f /backups/backup_$(date +\%Y\%m\%d_\%H\%M\%S).dump

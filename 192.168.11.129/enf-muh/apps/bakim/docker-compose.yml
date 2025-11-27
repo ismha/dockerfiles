@@ -1,0 +1,112 @@
+ls -version: "3"
+
+services:
+
+# -- Authentication & System Management
+# -------------------------------------------------
+
+ # generates NettyApps Bakim Authorization Api site
+  netty-live-bakim-login:
+    image: registry.nettyapps.com.tr/netty/restapi/authorization:latest
+    container_name: netty-live-bakim-login
+    environment:
+      - CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - MAXWRONGTRY=5
+      - TIMEOUTDURATION=90
+      - TZ=Europe/Istanbul
+      # - REDIS_CONNECTION=bakim.nettyapps.com.tr:6379
+      - REDIS_CONNECTION=netty-redis:6379,password=n€tty
+      - REDIS_INSTANCE=Maintenance_
+
+    ports:
+      - 8421:80
+      - 28421:443
+    cap_add:
+      - "NET_BIND_SERVICE"   
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # generates NettyApps Bakim Admin site
+  netty-live-bakim-admin:
+    image: registry.nettyapps.com.tr/netty/angular/admin-portal:latest
+    container_name: netty-live-bakim-admin
+    environment:
+      - API_URL=https://bakim.nettyapps.com.tr/adminapi
+      - ADMIN_URL=https://bakim.nettyapps.com.tr/login
+      - BASE_HREF=/admin/
+      - APPLICATION=AdminPortal
+      - TZ=Europe/Istanbul
+    ports:
+      - 8422:80
+      - 28422:443
+    cap_add:
+      - "NET_BIND_SERVICE"   
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # generates NettyApps Bakim Admin Api site
+  netty-live-bakim-adminapi:
+    image: registry.nettyapps.com.tr/netty/restapi/admin-portal:latest
+    container_name: netty-live-bakim-adminapi
+    environment:
+      - CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - MAXWRONGTRY=5
+      - TIMEOUTDURATION=90
+      - TZ=Europe/Istanbul
+    ports:
+      - 8423:80
+      - 28423:443
+    cap_add:
+      - "NET_BIND_SERVICE"   
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # -- Bakim Solution
+  # -------------------------------------------------
+
+  # generates NettyApps Bakim Angular site
+  netty-live-bakim:
+    image: registry.nettyapps.com.tr/netty/angular/maintenance:latest
+    container_name: netty-live-bakim
+    environment:
+      - API_URL=https://bakim.nettyapps.com.tr/maintenanceapi
+      - ADMIN_URL=https://bakim.nettyapps.com.tr/login
+      - BASE_HREF=/maintenance/
+      - APPLICATION=Maintenance
+      - TZ=Europe/Istanbul
+    ports:
+      - 8424:80
+      - 28424:443
+    cap_add:
+      - "NET_BIND_SERVICE"   
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # generates NettyApps Bakim Api site
+  netty-live-bakimapi:
+    image: registry.nettyapps.com.tr/netty/restapi/maintenance:latest
+    container_name: netty-live-bakimapi
+    environment:
+      - CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - MAXWRONGTRY=5
+      - TIMEOUTDURATION=90
+      - TZ=Europe/Istanbul
+    ports:
+      - 8425:80
+      - 28425:443
+    cap_add:
+      - "NET_BIND_SERVICE"   
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+networks:
+   netty-network:
+     name: netty-network
+     external: true
+     driver: bridge
+
