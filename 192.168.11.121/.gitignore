@@ -1,0 +1,15 @@
+# Ignore all files ending with
+.env
+.key
+*.log
+**/.env
+**/.key
+*.xml
+*.XML
+*.zip
+
+# Do NOT ignore folders named "log" or "logs"
+!log/
+!logs/
+
+

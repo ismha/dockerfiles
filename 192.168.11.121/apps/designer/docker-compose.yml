@@ -1,0 +1,120 @@
+version: "3"
+
+services:
+
+  # -- Authentication & System Management
+  # -------------------------------------------------
+
+  # generates NettyApps ERP Authorization Api site
+  netty-demo-login:
+    image: registry.nettyapps.com.tr/netty/restapi/authorization:latest
+    container_name: netty-designer-login
+    environment:
+      - CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - MAXWRONGTRY=5
+      - TIMEOUTDURATION=90
+      - TZ=Europe/Istanbul
+      - REDIS_CONNECTION=netty-redis:6379,password=n€tty
+      - REDIS_INSTANCE=Designer_
+    #depends_on:
+    #  - netty-redis    
+    ports:
+      - 9503:80
+      - 29503:443
+    volumes:
+      - ./logs/login:/app/logs/      
+    cap_add:
+      - "NET_BIND_SERVICE"
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # generates NettyApps ERP Admin site
+  netty-demo-admin:
+    image: registry.nettyapps.com.tr/netty/angular/admin-portal:latest
+    container_name: netty-designer-admin
+    environment:
+      - API_URL=https://www.nettyapps.dev/adminapi
+      - ADMIN_URL=https://www.nettyapps.dev/login
+      - BASE_HREF=/admin/
+      - APPLICATION=AdminPortal
+      - TZ=Europe/Istanbul
+    ports:
+      - 9501:80
+      - 29501:443
+    cap_add:
+      - "NET_BIND_SERVICE"
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # generates NettyApps ERP Admin Api site
+  netty-demo-adminapi:
+    image: registry.nettyapps.com.tr/netty/restapi/admin-portal:latest
+    container_name: netty-designer-adminapi
+    environment:
+      - CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - MAXWRONGTRY=5
+      - TIMEOUTDURATION=90
+      - TZ=Europe/Istanbul
+    depends_on:
+      - netty-redis
+    ports:
+      - 9502:80
+      - 29502:443
+    volumes:
+      - ./logs/admin:/app/logs/      
+    cap_add:
+      - "NET_BIND_SERVICE"
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # -- Designer Solution
+  # # -------------------------------------------------
+
+  # generates NettyApps Designer Angular site
+  netty-designer-angular:
+    image: registry.nettyapps.com.tr/netty/angular/designer:latest
+    container_name: netty-designer-angular
+    environment:
+      - API_URL=https://www.nettyapps.dev/designerapi
+      - ADMIN_URL=https://www.nettyapps.dev/login
+      - BASE_HREF=/designer/
+      - APPLICATION=Designer
+      - TZ=Europe/Istanbul
+    ports:
+      - 9504:80
+      - 29504:443
+    cap_add:
+      - "NET_BIND_SERVICE"
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+  # generates NettyApps Designer Api site
+  netty-designer-api:
+    image: registry.nettyapps.com.tr/netty/restapi/designer:latest
+    container_name: netty-designer-api
+    environment:
+      - CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - MAXWRONGTRY=5
+      - TIMEOUTDURATION=90
+      - TZ=Europe/Istanbul      
+      - APPLICATION=Designer
+    ports:
+      - 9505:80
+      - 29505:443
+    volumes:
+      - ./logs/designer:/app/logs/      
+    cap_add:
+      - "NET_BIND_SERVICE"
+    restart: unless-stopped
+    networks:
+      - netty-network
+
+networks:
+   netty-network:
+     name: netty-network
+     external: true
+     driver: bridge
